@@ -33,7 +33,7 @@ function App() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-green-50">
       {/* Hero Header */}
-      <header className="relative bg-gradient-to-br from-castleton-green via-green-700 to-emerald-800 text-white overflow-hidden gradient-animate">
+      <header className="relative bg-gradient-to-br from-castleton-green via-green-700 to-emerald-800 text-white overflow-hidden gradient-animate z-10">
         {/* 배경 패턴 */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full -translate-y-48 translate-x-48"></div>
@@ -90,7 +90,7 @@ function App() {
         </div>
       </header>
 
-      <main className="container mx-auto px-6 py-12 -mt-8">
+      <main className="container mx-auto px-6 py-12 -mt-8 relative z-0">
         {/* Team Overview Section */}
         <section className="mb-20 scroll-reveal">
           <div className="text-center mb-12">
@@ -230,8 +230,8 @@ function App() {
                     <h3 className="text-xl font-bold text-gray-900 mb-2">이승훈</h3>
                     <p className="text-sm text-gray-600 mb-3">ESTJ · 주도형/성과형</p>
                     <p className="text-gray-700 leading-relaxed">
-                      <span className="font-bold text-castleton-green">팀 리더 & 의사결정 추진자</span><br />
-                      주도적인 리더십과 빠른 의사결정으로 팀을 이끌고, 도전적인 목표를 향해 강한 추진력을 발휘
+                      <span className="font-bold text-castleton-green">비즈니스 전략가 & 실행 추진자</span><br />
+                      창업과 투자에 대한 열정으로 비즈니스 전략을 수립하고, 빠른 의사결정으로 도전적인 목표를 향해 강한 추진력을 발휘
                     </p>
                   </div>
                 </div>

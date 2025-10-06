@@ -15,7 +15,7 @@ const MemberCard: React.FC<MemberCardProps> = ({ member, onChatClick, index }) =
 
   return (
     <div
-      className="card-hover-effect bg-white rounded-2xl shadow-xl overflow-hidden group animate-scaleIn"
+      className="card-hover-effect bg-white rounded-2xl shadow-xl overflow-hidden group animate-scaleIn relative z-20"
       style={{ animationDelay }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
