@@ -49,19 +49,19 @@ function App() {
             <p className="text-xl md:text-2xl text-green-100 font-medium mb-8">
               팀원들의 성격을 이해하고, AI로 대화해보세요 🚀
             </p>
-            <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm border border-white/20 px-6 py-3 rounded-full">
+            <div className="inline-flex items-center gap-3 bg-white/20 backdrop-blur-md border-2 border-white/40 px-8 py-4 rounded-full shadow-lg hover:bg-white/30 transition-all">
               <div className="flex -space-x-2">
                 {teamMembers.slice(0, 4).map((member, idx) => (
                   <div
                     key={member.id}
-                    className="w-8 h-8 bg-white rounded-full flex items-center justify-center text-castleton-green font-bold text-sm border-2 border-castleton-green"
+                    className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-castleton-green font-black text-base border-3 border-white shadow-md"
                     style={{ zIndex: 4 - idx }}
                   >
                     {member.name[0]}
                   </div>
                 ))}
               </div>
-              <span className="text-sm font-semibold">4명의 팀원과 만나보세요</span>
+              <span className="text-base font-bold text-white">4명의 팀원과 만나보세요</span>
             </div>
           </div>
         </div>
