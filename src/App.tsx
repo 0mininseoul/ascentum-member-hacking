@@ -54,10 +54,23 @@ function App() {
                 {teamMembers.slice(0, 4).map((member, idx) => (
                   <div
                     key={member.id}
-                    className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-castleton-green font-black text-base border-3 border-white shadow-md"
+                    className="w-10 h-10 bg-white rounded-full flex items-center justify-center border-3 border-white shadow-md overflow-hidden"
                     style={{ zIndex: 4 - idx }}
                   >
-                    {member.name[0]}
+                    <img 
+                      src={`/images/${member.id}.jpg`}
+                      alt={member.name}
+                      className="w-full h-full object-cover rounded-full"
+                      onError={(e) => {
+                        // 이미지 로드 실패 시 첫 글자 표시
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                        const parent = target.parentElement;
+                        if (parent) {
+                          parent.innerHTML = `<span class="text-castleton-green font-black text-base">${member.name[0]}</span>`;
+                        }
+                      }}
+                    />
                   </div>
                 ))}
               </div>
@@ -114,8 +127,20 @@ function App() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="group p-6 rounded-2xl bg-gradient-to-br from-green-50 to-white border-2 border-transparent hover:border-castleton-green transition-all duration-300">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-castleton-green rounded-xl flex items-center justify-center text-white font-black text-xl flex-shrink-0">
-                    박
+                  <div className="w-12 h-12 bg-castleton-green rounded-xl flex items-center justify-center text-white font-black text-xl flex-shrink-0 overflow-hidden">
+                    <img 
+                      src="/images/park-young-min.jpg"
+                      alt="박영민"
+                      className="w-full h-full object-cover rounded-xl"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                        const parent = target.parentElement;
+                        if (parent) {
+                          parent.innerHTML = '박';
+                        }
+                      }}
+                    />
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-gray-900 mb-2">박영민</h3>
@@ -130,8 +155,20 @@ function App() {
 
               <div className="group p-6 rounded-2xl bg-gradient-to-br from-blue-50 to-white border-2 border-transparent hover:border-castleton-green transition-all duration-300">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-castleton-green rounded-xl flex items-center justify-center text-white font-black text-xl flex-shrink-0">
-                    승호
+                  <div className="w-12 h-12 bg-castleton-green rounded-xl flex items-center justify-center text-white font-black text-xl flex-shrink-0 overflow-hidden">
+                    <img 
+                      src="/images/lee-seung-ho.jpg"
+                      alt="이승호"
+                      className="w-full h-full object-cover rounded-xl"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                        const parent = target.parentElement;
+                        if (parent) {
+                          parent.innerHTML = '승호';
+                        }
+                      }}
+                    />
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-gray-900 mb-2">이승호</h3>
@@ -146,8 +183,20 @@ function App() {
 
               <div className="group p-6 rounded-2xl bg-gradient-to-br from-purple-50 to-white border-2 border-transparent hover:border-castleton-green transition-all duration-300">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-castleton-green rounded-xl flex items-center justify-center text-white font-black text-xl flex-shrink-0">
-                    시원
+                  <div className="w-12 h-12 bg-castleton-green rounded-xl flex items-center justify-center text-white font-black text-xl flex-shrink-0 overflow-hidden">
+                    <img 
+                      src="/images/lee-si-won.jpg"
+                      alt="이시원"
+                      className="w-full h-full object-cover rounded-xl"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                        const parent = target.parentElement;
+                        if (parent) {
+                          parent.innerHTML = '시원';
+                        }
+                      }}
+                    />
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-gray-900 mb-2">이시원</h3>
@@ -162,8 +211,20 @@ function App() {
 
               <div className="group p-6 rounded-2xl bg-gradient-to-br from-orange-50 to-white border-2 border-transparent hover:border-castleton-green transition-all duration-300">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-castleton-green rounded-xl flex items-center justify-center text-white font-black text-xl flex-shrink-0">
-                    승훈
+                  <div className="w-12 h-12 bg-castleton-green rounded-xl flex items-center justify-center text-white font-black text-xl flex-shrink-0 overflow-hidden">
+                    <img 
+                      src="/images/lee-seung-hoon.jpg"
+                      alt="이승훈"
+                      className="w-full h-full object-cover rounded-xl"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                        const parent = target.parentElement;
+                        if (parent) {
+                          parent.innerHTML = '승훈';
+                        }
+                      }}
+                    />
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-gray-900 mb-2">이승훈</h3>

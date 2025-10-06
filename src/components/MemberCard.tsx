@@ -30,8 +30,21 @@ const MemberCard: React.FC<MemberCardProps> = ({ member, onChatClick, index }) =
 
         {/* 아바타 */}
         <div className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 z-10">
-          <div className={`w-24 h-24 bg-gradient-to-br from-white to-gray-100 rounded-full flex items-center justify-center text-4xl font-black text-castleton-green border-4 border-white shadow-2xl transition-transform duration-300 ${isHovered ? 'scale-110 rotate-6' : ''}`}>
-            {member.name[0]}
+          <div className={`w-24 h-24 bg-gradient-to-br from-white to-gray-100 rounded-full flex items-center justify-center border-4 border-white shadow-2xl transition-transform duration-300 overflow-hidden ${isHovered ? 'scale-110 rotate-6' : ''}`}>
+            <img 
+              src={`/images/${member.id}.jpg`}
+              alt={member.name}
+              className="w-full h-full object-cover rounded-full"
+              onError={(e) => {
+                // 이미지 로드 실패 시 첫 글자 표시
+                const target = e.target as HTMLImageElement;
+                target.style.display = 'none';
+                const parent = target.parentElement;
+                if (parent) {
+                  parent.innerHTML = `<span class="text-4xl font-black text-castleton-green">${member.name[0]}</span>`;
+                }
+              }}
+            />
           </div>
         </div>
 
