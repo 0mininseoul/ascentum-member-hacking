@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "어센텀 멤버 해킹",
+  "name": "어센텀 멤버 해킹 - 팀원들과 AI로 대화하기",
+  "description": "어센텀 팀원들의 성격을 이해하고, 각자의 개성 넘치는 AI 챗봇과 대화해보세요!",
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,6 +21,9 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#1C543E",
+  "background_color": "#ffffff",
+  "orientation": "portrait-primary",
+  "categories": ["productivity", "social", "entertainment"],
+  "lang": "ko"
 }
