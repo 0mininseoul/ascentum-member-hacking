@@ -16,7 +16,7 @@ const ChatBot: React.FC<ChatBotProps> = ({ member, onClose }) => {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: 'assistant',
-      content: `안녕하세요 ${member.name}님! 저는 당신의 AI 비서입니다. 무엇을 도와드릴까요?`,
+      content: `안녕하세요! ${member.name}입니다. 무엇을 도와드릴까요?`,
     },
   ]);
   const [input, setInput] = useState('');
@@ -147,7 +147,7 @@ const ChatBot: React.FC<ChatBotProps> = ({ member, onClose }) => {
         <div className="bg-gradient-to-r from-castleton-green to-green-700 text-white p-6 rounded-t-2xl">
           <div className="flex justify-between items-center">
             <div>
-              <h2 className="text-2xl font-bold">{member.name}님의 AI 비서</h2>
+              <h2 className="text-2xl font-bold">{member.name}</h2>
               <p className="text-green-100 text-sm">{member.mbti} · {member.symoffice.primary}</p>
             </div>
             <button
