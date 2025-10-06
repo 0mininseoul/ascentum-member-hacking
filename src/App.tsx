@@ -41,7 +41,7 @@ function App() {
           <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-white rounded-full -translate-x-1/2 -translate-y-1/2"></div>
         </div>
 
-        <div className="relative container mx-auto px-6 py-20">
+        <div className="relative container mx-auto px-6 py-20 z-30">
           <div className={`text-center transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <h1 className="text-6xl md:text-7xl font-black mb-4 tracking-tight">
               어센텀 멤버 해킹

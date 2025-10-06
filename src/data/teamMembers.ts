@@ -2,6 +2,7 @@ export interface TeamMember {
   id: string;
   name: string;
   mbti: string;
+  instagram: string; // Instagram username without @
   symoffice: {
     primary: string;
     secondary: string;
@@ -20,6 +21,7 @@ export const teamMembers: TeamMember[] = [
     id: 'park-young-min',
     name: '박영민',
     mbti: 'INTP',
+    instagram: '0_min._.00',
     symoffice: {
       primary: '창조형',
       secondary: '긍정형',
@@ -76,6 +78,7 @@ export const teamMembers: TeamMember[] = [
     id: 'lee-seung-ho',
     name: '이승호',
     mbti: 'INTJ',
+    instagram: 'hvn_studio',
     symoffice: {
       primary: '긍정형',
       secondary: '연구형',
@@ -133,6 +136,7 @@ export const teamMembers: TeamMember[] = [
     id: 'lee-si-won',
     name: '이시원',
     mbti: 'ESTJ',
+    instagram: 'le.siwon',
     symoffice: {
       primary: '성과형',
       secondary: '규칙형',
@@ -189,6 +193,7 @@ export const teamMembers: TeamMember[] = [
     id: 'lee-seung-hoon',
     name: '이승훈',
     mbti: 'ESTJ',
+    instagram: 'gvn_or',
     symoffice: {
       primary: '주도형',
       secondary: '성과형',
