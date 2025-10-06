@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { TeamMember } from '../data/teamMembers';
+import { supabase } from '../lib/supabase';
 
 interface ChatBotProps {
   member: TeamMember;
@@ -20,6 +21,7 @@ const ChatBot: React.FC<ChatBotProps> = ({ member, onClose }) => {
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [sessionId, setSessionId] = useState<string | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -30,46 +32,94 @@ const ChatBot: React.FC<ChatBotProps> = ({ member, onClose }) => {
     scrollToBottom();
   }, [messages]);
 
+  // 채팅 세션 생성
+  useEffect(() => {
+    const createSession = async () => {
+      try {
+        const { data, error } = await supabase
+          .from('ai_chat_sessions')
+          .insert({
+            member_id: member.id,
+            member_name: member.name,
+          })
+          .select()
+          .single();
+
+        if (error) {
+          console.error('세션 생성 오류:', error);
+        } else if (data) {
+          setSessionId(data.id);
+        }
+      } catch (error) {
+        console.error('세션 생성 실패:', error);
+      }
+    };
+
+    createSession();
+  }, [member.id, member.name]);
+
   const handleSend = async () => {
-    if (!input.trim() || isLoading) return;
+    if (!input.trim() || isLoading || !sessionId) return;
 
     const userMessage: Message = { role: 'user', content: input };
+    const userInput = input;
     setMessages((prev) => [...prev, userMessage]);
     setInput('');
     setIsLoading(true);
 
     try {
-      // OpenAI API 호출
-      const response = await fetch('https://api.openai.com/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`,
-        },
-        body: JSON.stringify({
-          model: 'gpt-4',
-          messages: [
-            { role: 'system', content: member.systemPrompt },
-            ...messages.map((msg) => ({ role: msg.role, content: msg.content })),
-            { role: 'user', content: input },
-          ],
-          temperature: 0.8,
-          max_tokens: 500,
-        }),
+      // 사용자 메시지를 DB에 저장
+      await supabase.from('ai_chat_messages').insert({
+        session_id: sessionId,
+        role: 'user',
+        content: userInput,
       });
 
-      if (!response.ok) {
-        throw new Error('API 요청 실패');
+      // Supabase Edge Function 호출 (OpenAI API를 백엔드에서 호출)
+      const { data, error } = await supabase.functions.invoke('ai-chat', {
+        body: {
+          messages: messages.map((msg) => ({
+            role: msg.role,
+            content: msg.content,
+          })),
+          memberId: member.id,
+          memberName: member.name,
+          systemPrompt: member.systemPrompt,
+        },
+      });
+
+      if (error) {
+        console.error('Edge Function 오류:', error);
+        throw error;
       }
 
-      const data = await response.json();
-      const assistantMessage: Message = {
-        role: 'assistant',
-        content: data.choices[0].message.content,
-      };
+      if (data && data.success) {
+        const assistantMessage: Message = {
+          role: 'assistant',
+          content: data.message,
+        };
 
-      setMessages((prev) => [...prev, assistantMessage]);
-    } catch (error) {
+        setMessages((prev) => [...prev, assistantMessage]);
+
+        // AI 응답을 DB에 저장
+        await supabase.from('ai_chat_messages').insert({
+          session_id: sessionId,
+          role: 'assistant',
+          content: data.message,
+        });
+
+        // 세션 메시지 카운트 업데이트
+        await supabase
+          .from('ai_chat_sessions')
+          .update({ 
+            message_count: messages.length + 2,
+            session_end: new Date().toISOString(),
+          })
+          .eq('id', sessionId);
+      } else {
+        throw new Error(data?.error || 'AI 응답 오류');
+      }
+    } catch (error: any) {
       console.error('Chat error:', error);
       setMessages((prev) => [
         ...prev,
@@ -153,11 +203,11 @@ const ChatBot: React.FC<ChatBotProps> = ({ member, onClose }) => {
               onKeyPress={handleKeyPress}
               placeholder="메시지를 입력하세요..."
               className="flex-1 border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-castleton-green"
-              disabled={isLoading}
+              disabled={isLoading || !sessionId}
             />
             <button
               onClick={handleSend}
-              disabled={isLoading || !input.trim()}
+              disabled={isLoading || !input.trim() || !sessionId}
               className="bg-castleton-green hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               전송

@@ -27,3 +27,6 @@ yarn-error.log*
 # Notion scripts
 create-notion*.js
 collaboration-guide.js
+
+# MCP configuration (contains sensitive tokens)
+.cursor/
