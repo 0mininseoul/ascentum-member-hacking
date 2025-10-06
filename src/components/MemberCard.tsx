@@ -46,8 +46,7 @@ const MemberCard: React.FC<MemberCardProps> = ({ member, onChatClick, index }) =
       {/* 카드 내용 */}
       <div className="pt-16 pb-6 px-6">
         <div className="text-center mb-6">
-          <h3 className="text-2xl font-extrabold text-gray-900 mb-1">{member.name}</h3>
-          <p className="text-sm font-medium text-gray-500 mb-2">{member.role}</p>
+          <h3 className="text-2xl font-extrabold text-gray-900 mb-2">{member.name}</h3>
           <div className="inline-flex items-center gap-2 bg-green-50 px-3 py-1 rounded-full">
             <div className="w-2 h-2 bg-castleton-green rounded-full animate-pulse"></div>
             <span className="text-xs font-semibold text-castleton-green">

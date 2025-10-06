@@ -100,14 +100,14 @@ function App() {
           </div>
         </section>
 
-        {/* Role Recommendations Section */}
+        {/* Team Collaboration Section */}
         <section className="mb-20 scroll-reveal">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
-              역할 추천
+              팀 협업 역할
             </h2>
             <p className="text-lg text-gray-600">
-              각 팀원에게 어울리는 최적의 역할을 확인하세요
+              각 팀원의 성격에 맞는 협업 방식을 확인하세요
             </p>
           </div>
           <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 border border-gray-100">
@@ -118,11 +118,11 @@ function App() {
                     박
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">박영민 (CEO)</h3>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">박영민</h3>
                     <p className="text-sm text-gray-600 mb-3">INTP · 창조형/긍정형</p>
                     <p className="text-gray-700 leading-relaxed">
-                      <span className="font-bold text-castleton-green">혁신 전략가, 제품 비전 설계자</span><br />
-                      논리적 분석과 창의적 아이디어로 회사의 방향성을 제시하는 역할에 최적화
+                      <span className="font-bold text-castleton-green">아이디어 제안자 & 전략적 분석가</span><br />
+                      논리적 분석과 창의적 아이디어로 팀의 방향성을 제시하고, 복잡한 문제에 대한 혁신적인 해결책을 도출
                     </p>
                   </div>
                 </div>
@@ -134,11 +134,11 @@ function App() {
                     승호
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">이승호 (Developer)</h3>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">이승호</h3>
                     <p className="text-sm text-gray-600 mb-3">INTJ · 긍정형/연구형</p>
                     <p className="text-gray-700 leading-relaxed">
-                      <span className="font-bold text-castleton-green">시스템 아키텍트, 기술 리드</span><br />
-                      체계적인 시스템 구축과 효율적인 개발 프로세스로 기술적 우수성 달성
+                      <span className="font-bold text-castleton-green">시스템 설계자 & 실행 계획가</span><br />
+                      체계적인 계획 수립과 효율적인 실행으로 아이디어를 현실화하고, 장기적 비전을 구체적인 단계로 구현
                     </p>
                   </div>
                 </div>
@@ -150,11 +150,11 @@ function App() {
                     시원
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">이시원 (Marketing)</h3>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">이시원</h3>
                     <p className="text-sm text-gray-600 mb-3">ESTJ · 성과형/규칙형</p>
                     <p className="text-gray-700 leading-relaxed">
-                      <span className="font-bold text-castleton-green">마케팅 전략 실행 책임자</span><br />
-                      명확한 목표 설정과 강력한 실행력으로 성과 창출
+                      <span className="font-bold text-castleton-green">목표 달성자 & 품질 관리자</span><br />
+                      명확한 목표 설정과 강력한 실행력으로 팀의 성과를 극대화하고, 체계적인 프로세스로 품질 보장
                     </p>
                   </div>
                 </div>
@@ -166,11 +166,11 @@ function App() {
                     승훈
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">이승훈 (Finance/Design)</h3>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">이승훈</h3>
                     <p className="text-sm text-gray-600 mb-3">ESTJ · 주도형/성과형</p>
                     <p className="text-gray-700 leading-relaxed">
-                      <span className="font-bold text-castleton-green">프로젝트 리더, 운영 책임자</span><br />
-                      주도적인 리더십과 빠른 의사결정으로 팀을 이끌고 목표 달성
+                      <span className="font-bold text-castleton-green">팀 리더 & 의사결정 추진자</span><br />
+                      주도적인 리더십과 빠른 의사결정으로 팀을 이끌고, 도전적인 목표를 향해 강한 추진력을 발휘
                     </p>
                   </div>
                 </div>
